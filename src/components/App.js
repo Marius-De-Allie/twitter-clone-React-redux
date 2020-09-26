@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useDispatch } from 'react-redux';
 import handleGetInitialData from '../redux/actions/shared'
+import Homepage from './Homepage';
 
 export default function App () {
   // Gain access to redux store's dispatch method.
@@ -13,7 +14,7 @@ export default function App () {
 
   return (
     <div className='container'>
-      Redux Course Curriculum
+      <Homepage />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import TweetItem from './TweetItem';
 
 const TweetList = () => {
   // Retrieve tweets peice of state from redux store.
@@ -13,7 +14,7 @@ const TweetList = () => {
     <React.Fragment>
       <h2>tweets</h2>
       <ul>
-        {tweetArray.map((tweet) => <p key={tweet.id}>{tweet.text}</p>)}
+        {tweetArray.map((tweet) => <TweetItem key={tweet.id} tweet={tweet} />)}
 
       </ul>
     </React.Fragment>

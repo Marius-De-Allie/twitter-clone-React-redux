@@ -1,11 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  { FaRegHeart, FaHeart } from 'react-icons/fa';
 
-const TweetItem = ({ tweet }) => {
 
+const TweetItem = ({ tweet }) => {
   const tweets = useSelector((state) => state.tweets);
+  const authedUser = useSelector((state) => state.authedUser);
+  const dispatch = useDispatch();
+
 
   // Retreive author of tweet being replied to.
   let author;
@@ -22,7 +25,11 @@ const TweetItem = ({ tweet }) => {
         <p>{tweet.text}</p>
         <div className='icons-container'>
           <span>{`replies: ${tweet.replies.length}, `}</span>
-          <FaRegHeart>{`likes: ${tweet.likes.length}`}</FaRegHeart>
+          {tweet.likes.includes(authedUser) 
+            ? <FaHeart></FaHeart>
+            : <FaRegHeart></FaRegHeart>
+          }
+          <span>{` ${tweet.likes.length > 0 ? tweet.likes.length : '0'}`}</span>
         </div>
       </div>
     </li>

@@ -1,5 +1,7 @@
 // AuthedUser reducer.
-const authedUser = (state = null, action) => {
+
+const initialState = 'dan_abramov';
+const authedUser = (state = initialState, action) => {
   switch(action.type) {
 
     default:

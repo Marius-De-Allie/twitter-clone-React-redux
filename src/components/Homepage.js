@@ -5,7 +5,6 @@ const Homepage = () => {
 
   return (
     <div>
-      HomePage
       <TweetList />
     </div>
   );

@@ -3,14 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  { FaRegHeart, FaHeart } from 'react-icons/fa';
 
-
 const TweetItem = ({ tweet }) => {
   const tweets = useSelector((state) => state.tweets);
   const authedUser = useSelector((state) => state.authedUser);
   const dispatch = useDispatch();
 
+  // Check whether authedUser has liked this tweet.
+  const hasLiked = tweet.likes.includes(authedUser);
+
   // Handle Tweet like button click event.
-  const onLikeClick = (tweetObj) => {
+  const onLikeClick = () => {
+    
 
     console.log('like clicked!!')
 
@@ -32,7 +35,7 @@ const TweetItem = ({ tweet }) => {
         <p>{tweet.text}</p>
         <div className='icons-container'>
           <span>{`replies: ${tweet.replies.length}, `}</span>
-            {tweet.likes.includes(authedUser) 
+            {hasLiked
               ? <FaHeart style={{cursor: 'pointer' }}onClick={onLikeClick}></FaHeart>
               : <FaRegHeart style={{cursor: 'pointer' }}onClick={onLikeClick}></FaRegHeart>
             }

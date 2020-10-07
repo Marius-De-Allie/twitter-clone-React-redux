@@ -35,8 +35,8 @@ const TweetItem = ({ tweet }) => {
   };
 
   return console.log(tweet)||(
-    <li>
-      <div style={{border: 'solid 1px red', margin: '20px'}}>
+    <li style={{border: 'solid 1px red', margin: '20px'}}>
+      <Link to={`/tweet/${tweet.id}`}>
         <p>{tweet.author}</p>
         <p>{tweet.timestamp}</p>
         {tweet.replyingTo && <p>{`replying to: @${author}`}</p>}
@@ -49,7 +49,7 @@ const TweetItem = ({ tweet }) => {
             }
           <span>{` ${tweet.likes.length > 0 ? tweet.likes.length : '0'}`}</span>
         </div>
-      </div>
+      </Link>
     </li>
   );
 };

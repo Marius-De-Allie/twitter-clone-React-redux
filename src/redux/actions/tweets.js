@@ -12,6 +12,7 @@ const toggleLike = ({ id, hasLiked, authedUser }) => ({
   authedUser
 });
 
+/*************TODO: UPDATE THUNK ACTION CREATOR TO DO OPTIMISTIC UPDATE ********************/
 // Thunk action creator.
 const handleToggleLike = (toggleObj) => {
   return (dispatch) => {

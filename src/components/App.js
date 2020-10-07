@@ -1,6 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import handleGetInitialData from '../redux/actions/shared'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import handleGetInitialData from '../redux/actions/shared';
 import Homepage from './Homepage';
 
 export default function App () {
@@ -14,7 +15,14 @@ export default function App () {
 
   return (
     <div className='container'>
-      <Homepage />
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Homepage} />
+          <Route path="/tweet/:tweetId" render={() => <p>TweetPage</p>} />
+          <Route path="/new" render={() => <p>NewTweetPage</p>} />
+          <Route render={() => <p>404 Page</p>} />
+        </Switch>
+      </Router>
     </div>
   )
 }

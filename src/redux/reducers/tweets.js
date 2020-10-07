@@ -1,4 +1,5 @@
 import { SUCCESS_INIT_DATA } from '../actions/shared';
+import { TOGGLE_LIKE } from '../actions/tweets';
 
 // Tweets reducer.
 const tweets = (state = {}, action) => {
@@ -8,6 +9,15 @@ const tweets = (state = {}, action) => {
       return {
         ...state,
         ...tweets
+      }
+    case TOGGLE_LIKE:
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          likes: action.hasLiked ? state[action.id].likes.filter(user => user !== action.authedUser)
+            : [...state[action.id].likes, action.authedUser]
+        }
       }
     default:
       return state;

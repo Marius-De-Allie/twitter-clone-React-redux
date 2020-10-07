@@ -9,6 +9,13 @@ const TweetItem = ({ tweet }) => {
   const authedUser = useSelector((state) => state.authedUser);
   const dispatch = useDispatch();
 
+  // Handle Tweet like button click event.
+  const onLikeClick = (tweetObj) => {
+
+    console.log('like clicked!!')
+
+  }
+
 
   // Retreive author of tweet being replied to.
   let author;
@@ -25,10 +32,10 @@ const TweetItem = ({ tweet }) => {
         <p>{tweet.text}</p>
         <div className='icons-container'>
           <span>{`replies: ${tweet.replies.length}, `}</span>
-          {tweet.likes.includes(authedUser) 
-            ? <FaHeart></FaHeart>
-            : <FaRegHeart></FaRegHeart>
-          }
+            {tweet.likes.includes(authedUser) 
+              ? <FaHeart style={{cursor: 'pointer' }}onClick={onLikeClick}></FaHeart>
+              : <FaRegHeart style={{cursor: 'pointer' }}onClick={onLikeClick}></FaRegHeart>
+            }
           <span>{` ${tweet.likes.length > 0 ? tweet.likes.length : '0'}`}</span>
         </div>
       </div>

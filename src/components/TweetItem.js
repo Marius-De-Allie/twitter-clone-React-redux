@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import  { FaRegHeart, FaHeart } from 'react-icons/fa';
 
 const TweetItem = ({ tweet }) => {
 
@@ -12,7 +13,7 @@ const TweetItem = ({ tweet }) => {
     author = tweets[tweet.replyingTo].author;
   };
 
-  return (
+  return console.log(tweet)||(
     <li>
       <div style={{border: 'solid 1px red', margin: '20px'}}>
         <p>{tweet.author}</p>
@@ -20,7 +21,8 @@ const TweetItem = ({ tweet }) => {
         {tweet.replyingTo && <p>{`replying to: @${author}`}</p>}
         <p>{tweet.text}</p>
         <div className='icons-container'>
-          <span>{`replies: ${tweet.replies.length}, `}</span><span>{`likes: ${tweet.likes.length}`}</span>
+          <span>{`replies: ${tweet.replies.length}, `}</span>
+          <FaRegHeart>{`likes: ${tweet.likes.length}`}</FaRegHeart>
         </div>
       </div>
     </li>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  { FaRegHeart, FaHeart } from 'react-icons/fa';
+import handleToggleLike from '../redux/actions/tweets';
 
 const TweetItem = ({ tweet }) => {
   const tweets = useSelector((state) => state.tweets);
@@ -13,8 +14,15 @@ const TweetItem = ({ tweet }) => {
 
   // Handle Tweet like button click event.
   const onLikeClick = () => {
-    
 
+    // object to pass to handleToggleLike thunk action creator.
+    const toggleObj = {
+      id: tweet.id,
+      hasLiked,
+      authedUser
+    };
+
+    dispatch(handleToggleLike(toggleObj));
     console.log('like clicked!!')
 
   }

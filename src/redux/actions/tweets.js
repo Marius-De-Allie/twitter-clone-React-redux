@@ -24,7 +24,6 @@ const handleToggleLike = (toggleObj) => {
   }
 };
 
-
 export {
   handleToggleLike as default,
   TOGGLE_LIKE

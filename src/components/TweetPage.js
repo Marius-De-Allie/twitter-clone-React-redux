@@ -8,9 +8,14 @@ const TweetPage = ({ match }) => {
 
   return (
     <div>
-      {tweet.id}
-      TweetItem
-      ReplayForm
+      {tweet ? (
+        <React.Fragment>
+          <TweetItem tweet={tweet} />
+
+        </React.Fragment>
+        ) 
+        : <h2>Loading</h2>
+      }
     </div>
   );
 };

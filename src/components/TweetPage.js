@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import TweetItem from './TweetItem';
+import ReplyForm from './ReplyForm';
 
 const TweetPage = ({ match }) => {
   // Retrieve current tweet from redux store.
@@ -11,6 +12,7 @@ const TweetPage = ({ match }) => {
       {tweet ? (
         <React.Fragment>
           <TweetItem tweet={tweet} />
+          <ReplyForm />
 
         </React.Fragment>
         ) 

@@ -7,8 +7,15 @@ const ReplyForm = () => {
     setReply(evt.target.value);
   };
 
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    console.log('SUBMITTED');
+  };
+
   return (
-    <form>
+    <form
+      onSubmit={handleSubmit}
+    >
       <textarea
         value={reply}
         placeholder="What's happening"

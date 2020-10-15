@@ -1,15 +1,21 @@
 import { saveLikeToggle } from '../../utils/api';
 
-// ACTION TYPE
+// ACTION TYPES
 const TOGGLE_LIKE = 'TOGGLE_LIKE';
+const ADD_TWEET = 'ADD_TWEET';
 
-// Action creator.
-
+// ACTION CREATORS.
 const toggleLike = ({ id, hasLiked, authedUser }) => ({
   type: TOGGLE_LIKE,
   id,
   hasLiked,
   authedUser
+});
+
+// AddTweet action creator.
+const addTweet = (tweet) => ({
+  type: ADD_TWEET,
+  tweet
 });
 
 /*************TODO: UPDATE THUNK ACTION CREATOR TO DO OPTIMISTIC UPDATE ********************/
@@ -27,5 +33,6 @@ const handleToggleLike = (toggleObj) => {
 
 export {
   handleToggleLike as default,
-  TOGGLE_LIKE
+  TOGGLE_LIKE,
+  ADD_TWEET
 };

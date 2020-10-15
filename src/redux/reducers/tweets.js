@@ -1,5 +1,5 @@
 import { SUCCESS_INIT_DATA } from '../actions/shared';
-import { TOGGLE_LIKE, ADD_TWEET } from '../actions/tweets';
+import { TOGGLE_LIKE, ADD_TWEET, ADD_REPLY } from '../actions/tweets';
 
 // Tweets reducer.
 const tweets = (state = {}, action) => {
@@ -23,6 +23,14 @@ const tweets = (state = {}, action) => {
       return {
         ...state,
         [action.tweet.id]: action.tweet
+      }
+    case ADD_REPLY:
+      return {
+        ...state,
+        [action.tweetId]: {
+          ...state[action.tweetId],
+          replies: [...state[action.tweetId].replies, action.replyId] 
+        }
       }
     default:
       return state;

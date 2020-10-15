@@ -22,6 +22,8 @@ const ReplyForm = ({ match }) => {
     };
     // dispatch handleAddTweet thunk action.
     dispatch(handleAddTweet(tweetInfo));
+    // Clear reply form text area field.
+    setTweetText('');
     console.log('SUBMITTED');
   };
 

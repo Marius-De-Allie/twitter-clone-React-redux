@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
-const ReplyForm = () => {
+const ReplyForm = (props) => {
   const [reply, setReply] = useState('');
 
   const replyChange = evt => {
@@ -12,6 +13,7 @@ const ReplyForm = () => {
     console.log('SUBMITTED');
   };
 
+  console.log('REPLY_FORM', props);
   return (
     <form
       onSubmit={handleSubmit}
@@ -30,4 +32,4 @@ const ReplyForm = () => {
   );
 };
 
-export default ReplyForm;
+export default withRouter(ReplyForm);

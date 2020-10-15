@@ -1,4 +1,4 @@
-import { saveLikeToggle } from '../../utils/api';
+import { saveLikeToggle, saveTweet } from '../../utils/api';
 
 // ACTION TYPES
 const TOGGLE_LIKE = 'TOGGLE_LIKE';
@@ -19,20 +19,33 @@ const addTweet = (tweet) => ({
 });
 
 /*************TODO: UPDATE THUNK ACTION CREATOR TO DO OPTIMISTIC UPDATE ********************/
-// Thunk action creator.
+// THUNK ACTION CREATORS.
 const handleToggleLike = (toggleObj) => {
   return (dispatch) => {
 
     // call async api function.
     saveLikeToggle(toggleObj)
-    // dispatch plain action.
+    // dispatch plain action if request successful.
       .then(() => dispatch(toggleLike(toggleObj)))
       .catch((e) => console.log(e))
   }
 };
 
+const handleAddTweet = (tweetInfo) => {
+  return(dispatch) => {
+    // call async api function to save new tweet.
+    saveTweet(tweetInfo)
+    // Dispatch plain action object to add tweet if request successful.
+      .then((tweet) => {
+        dispatch(addTweet(tweet));
+      })
+      .catch((e) => console.log(e));
+  }
+};
+
 export {
   handleToggleLike as default,
+  handleAddTweet,
   TOGGLE_LIKE,
   ADD_TWEET
 };

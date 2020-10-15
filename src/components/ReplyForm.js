@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-const ReplyForm = (props) => {
-  const [reply, setReply] = useState('');
+const ReplyForm = ({ match }) => {
+  const [tweetText, setTweetText] = useState('');
+  const author = useSelector(({ authedUser }) => authedUser);
 
   const replyChange = evt => {
-    setReply(evt.target.value);
+    setTweetText(evt.target.value);
   };
 
   const handleSubmit = evt => {
@@ -13,13 +15,12 @@ const ReplyForm = (props) => {
     console.log('SUBMITTED');
   };
 
-  console.log('REPLY_FORM', props);
   return (
     <form
       onSubmit={handleSubmit}
     >
       <textarea
-        value={reply}
+        value={tweetText}
         placeholder="What's happening"
         onChange={replyChange}
       >

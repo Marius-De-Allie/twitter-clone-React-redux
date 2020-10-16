@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import handleGetInitialData from '../redux/actions/shared';
 import Homepage from './Homepage';
 import TweetPage from './TweetPage';
+import NewTweet from './NewTweet';
 
 export default function App () {
   // Gain access to redux store's dispatch method.
@@ -20,7 +21,7 @@ export default function App () {
         <Switch>
           <Route path="/" exact component={Homepage} />
           <Route path="/tweet/:tweetId" component={TweetPage} />
-          <Route path="/new" render={() => <p>NewTweetPage</p>} />
+          <Route path="/new" component={NewTweet} />
           <Route render={() => <p>404 Page</p>} />
         </Switch>
       </Router>

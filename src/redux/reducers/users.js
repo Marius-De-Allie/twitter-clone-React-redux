@@ -1,4 +1,5 @@
 import { SUCCESS_INIT_DATA } from '../actions/shared';
+import { ADD_TWEET } from '../actions/tweets';
 
 // Users reducer.
 const users = (state = {}, action) => {
@@ -8,6 +9,14 @@ const users = (state = {}, action) => {
       return {
         ...state,
         ...users
+      }
+    case ADD_TWEET:
+      return {
+        ...state,
+        [action.tweet.author]: {
+          ...state[action.tweet.author],
+          tweets: [...state[action.tweet.author].tweets, action.tweet.id]
+        }
       }
     default:
       return state;

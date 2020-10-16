@@ -10,7 +10,8 @@ const TweetPage = ({ match }) => {
   const tweets = useSelector((state) => state.tweets);
 
   let replies;
-  const repliesArray = (() => {
+  // IIFE returns a sorted array of all replies to current tweet.
+  (() => {
     if(tweet) {
       replies = tweet.replies.map(replyId => tweets[replyId])
         .sort((a, b) => b.timestamp - a.timestamp);

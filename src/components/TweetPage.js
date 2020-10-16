@@ -23,7 +23,10 @@ const TweetPage = ({ match }) => {
         <React.Fragment>
           <TweetItem tweet={tweet} />
           <ReplyForm />
-          
+          {tweet.replies.length > 0 && replies.map(reply => 
+              <TweetItem tweet={reply} key={reply.id} />
+            )
+          }
         </React.Fragment>
         ) 
         : <h2>Loading</h2>

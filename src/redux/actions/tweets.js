@@ -38,7 +38,7 @@ const handleToggleLike = (toggleObj) => {
   }
 };
 
-const handleAddTweet = (id, tweetInfo) => {
+const handleAddTweet = (id = null, tweetInfo) => {
   return(dispatch) => {
     // call async api function to save new tweet.
     saveTweet(tweetInfo)

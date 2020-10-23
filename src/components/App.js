@@ -5,6 +5,7 @@ import handleGetInitialData from '../redux/actions/shared';
 import Homepage from './Homepage';
 import TweetPage from './TweetPage';
 import NewTweet from './NewTweet';
+import Nav from './Nav';
 
 export default function App () {
   // Gain access to redux store's dispatch method.
@@ -18,6 +19,7 @@ export default function App () {
   return (
     <div className='container'>
       <Router>
+        <Nav />
         <Switch>
           <Route path="/" exact component={Homepage} />
           <Route path="/tweet/:tweetId" component={TweetPage} />

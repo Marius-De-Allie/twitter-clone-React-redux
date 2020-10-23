@@ -63,3 +63,8 @@ li {
   margin: 0 auto;
   padding: 20px;
 }
+
+.active {
+  color: red;
+  font-weight: bold;
+}

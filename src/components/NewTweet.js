@@ -3,7 +3,7 @@ import ReplyForm from './ReplyForm';
 
 const NewTweet  = (props) => (
   <div>
-    <ReplyForm />
+    <ReplyForm newTweet />
   </div>
 );
 

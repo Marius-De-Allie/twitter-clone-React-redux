@@ -29,12 +29,16 @@ const addReply = (tweetId, replyId) => ({
 // THUNK ACTION CREATORS.
 const handleToggleLike = (toggleObj) => {
   return (dispatch) => {
+    // Optimistically toggle like.
+    dispatch(toggleLike(toggleObj));
 
     // call async api function.
     saveLikeToggle(toggleObj)
-    // dispatch plain action if request successful.
-      .then(() => dispatch(toggleLike(toggleObj)))
-      .catch((e) => console.log(e))
+    // dispatch toggleLike action to reverse change if request fails.
+      .catch((e) => {
+        console.log(e);
+        dispatch((toggleLike(toggleObj)));
+      })
   }
 };
 

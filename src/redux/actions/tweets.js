@@ -38,6 +38,7 @@ const handleToggleLike = (toggleObj) => {
       .catch((e) => {
         console.log(e);
         dispatch((toggleLike(toggleObj)));
+        // TODO - ADD action for likefail error.
       })
   }
 };

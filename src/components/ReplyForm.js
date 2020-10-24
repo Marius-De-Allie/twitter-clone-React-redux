@@ -5,6 +5,7 @@ import { handleAddTweet } from '../redux/actions/tweets';
 
 const ReplyForm = ({ match, newTweet }) => {
   const [tweetText, setTweetText] = useState('');
+  const [loading, setLoading] = useState(true);
   const author = useSelector(({ authedUser }) => authedUser);
   const dispatch = useDispatch();
   const history = useHistory();

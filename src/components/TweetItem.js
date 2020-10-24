@@ -38,7 +38,7 @@ const TweetItem = ({ tweet }) => {
     <li style={{border: 'solid 1px red', margin: '20px'}}>
       <Link to={`/tweet/${tweet.id}`}>
         <p>{tweet.author}</p>
-        <p>{tweet.timestamp}</p>
+        <p>{` ${new Date(tweet.timestamp).toLocaleTimeString()} | ${new Date(tweet.timestamp).toLocaleDateString()}`}</p>
         {tweet.replyingTo && <p>{`replying to: @${author}`}</p>}
         <p>{tweet.text}</p>
         <div className='icons-container'>
